@@ -1,0 +1,59 @@
+this is qa file...
+
+
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class EcommerceWebsiteTest {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Maximize the browser window
+        driver.manage().window().maximize();
+
+        // Navigate to the e-commerce website
+        driver.get("https://www.example.com");
+
+        // Click on the login link
+        WebElement loginLink = driver.findElement(By.linkText("Login"));
+        loginLink.click();
+
+        // Enter username and password
+        WebElement usernameField = driver.findElement(By.id("username"));
+        usernameField.sendKeys("your_username");
+
+        WebElement passwordField = driver.findElement(By.id("password"));
+        passwordField.sendKeys("your_password");
+
+        // Click on the login button
+        WebElement loginButton = driver.findElement(By.id("loginButton"));
+        loginButton.click();
+
+        // Wait for the page to load
+        try {
+            Thread.sleep(5000); // You can use explicit waits instead
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Verify if login is successful
+        WebElement loggedInUserName = driver.findElement(By.className("user-name"));
+        if(loggedInUserName.getText().equals("Your Name")) {
+            System.out.println("Login successful!");
+        } else {
+            System.out.println("Login failed!");
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+
