@@ -1,0 +1,42 @@
+this is index file...
+
+
+
+import random
+
+def generate_passengers():
+    return random.randint(1, 10)
+
+def main():
+    print("Welcome to the Bus Game!")
+    passengers_on_bus = 0
+    total_passengers = 0
+    stops = 10
+
+    for stop in range(1, stops + 1):
+        print(f"\n--- Stop {stop} ---")
+        passengers_at_stop = generate_passengers()
+        total_passengers += passengers_at_stop
+        print(f"{passengers_at_stop} passengers are waiting at the stop.")
+
+        # Check if there are more passengers than available seats
+        if passengers_on_bus >= 50:
+            print("The bus is full!")
+            continue
+
+        # Determine how many passengers can board
+        available_seats = 50 - passengers_on_bus
+        passengers_boarding = min(passengers_at_stop, available_seats)
+
+        # Update counts
+        passengers_on_bus += passengers_boarding
+        total_passengers -= passengers_boarding
+
+        print(f"{passengers_boarding} passengers board the bus.")
+
+    print("\n--- End of the line! ---")
+    print(f"Total passengers served: {total_passengers}")
+
+if __name__ == "__main__":
+    main()
+
