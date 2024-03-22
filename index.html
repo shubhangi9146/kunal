@@ -40,3 +40,63 @@ def main():
 if __name__ == "__main__":
     main()
 
+
+
+
+
+
+
+
+
+    import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
+
+public class WhatsAppAutomation {
+    public static void main(String[] args) {
+        // Set the path to the ChromeDriver executable
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+
+        // Create a new instance of the ChromeDriver
+        WebDriver driver = new ChromeDriver();
+
+        // Maximize the browser window
+        driver.manage().window().maximize();
+
+        // Open WhatsApp Web
+        driver.get("https://web.whatsapp.com/");
+
+        // Wait for the user to scan the QR code and log in
+        System.out.println("Please scan the QR code and press enter.");
+        new java.util.Scanner(System.in).nextLine();
+
+        // Find the search input field
+        WebElement searchBox = driver.findElement(By.cssSelector("div[role='combobox']"));
+
+        // Enter the name of the contact you want to send a message to
+        String contactName = "Contact Name";
+        searchBox.sendKeys(contactName);
+        searchBox.sendKeys("\n");
+
+        // Wait for the chat to load
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        // Find the message input field
+        WebElement messageInput = driver.findElement(By.cssSelector("div[contenteditable='true']"));
+
+        // Type your message
+        String messageToSend = "Hello from WhatsApp automation!";
+        messageInput.sendKeys(messageToSend);
+        messageInput.sendKeys("\n");
+
+        // Close the browse
+
+
+
+
+
+
+	=======Updated dev branch=====
